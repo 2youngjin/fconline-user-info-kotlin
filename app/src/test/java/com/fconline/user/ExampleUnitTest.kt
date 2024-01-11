@@ -1,4 +1,4 @@
-package com.fconline.fconline_user_kotlin
+package com.fconline.user
 
 import org.junit.Test
 

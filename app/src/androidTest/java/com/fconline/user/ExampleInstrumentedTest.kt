@@ -1,4 +1,4 @@
-package com.fconline.fconline_user_kotlin
+package com.fconline.user
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
