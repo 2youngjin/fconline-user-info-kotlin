@@ -20,11 +20,16 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
+        style="@style/Theme.MaterialComponents.DayNight"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:layout_height="@dimen/bottom_navigation_height"
+        app:itemTextAppearanceActive="@dimen/design_bottom_navigation_active_text_size"
+        app:itemTextAppearanceInactive="@dimen/design_bottom_navigation_text_size"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_main"
+        tools:ignore="PrivateResource" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

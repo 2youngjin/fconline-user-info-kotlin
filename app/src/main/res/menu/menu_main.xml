@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  
+
+    <item
+        android:id="@+id/accountInfoFragment"
+        android:icon="@drawable/baseline_account_circle_24"
+        android:title="@string/account_info_text" />
+    <item
+        android:id="@+id/matchInfoFragment"
+        android:icon="@drawable/baseline_people_24"
+        android:title="@string/match_info_text" />
+    <item
+        android:id="@+id/rankInfoFragment"
+        android:icon="@drawable/baseline_lank_24"
+        android:title="@string/lank_info_text" />
+    <item
+        android:id="@+id/metadataInfoFragment"
+        android:icon="@drawable/baseline_dataset_24"
+        android:title="@string/metadata_text" />
+    <item
+        android:id="@+id/imageInfoFragment"
+        android:icon="@drawable/baseline_image_24"
+        android:title="@string/image_info_text" />
+
 </menu>

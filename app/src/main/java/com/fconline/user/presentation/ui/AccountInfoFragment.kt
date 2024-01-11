@@ -12,9 +12,9 @@ import com.fconline.user.presentation.viewmodel.AccountInfoViewModel
 
 class AccountInfoFragment : Fragment(R.layout.fragment_account_info) {
 
-    lateinit var binding: FragmentAccountInfoBinding
+    private lateinit var binding: FragmentAccountInfoBinding
 
-    val viewModel: AccountInfoViewModel by viewModels()
+    private val viewModel: AccountInfoViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
