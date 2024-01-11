@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- paddings -->
+    <dimen name="padding_xsmall">2dp</dimen>
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">12dp</dimen>
+    <dimen name="padding_xlarge">16dp</dimen>
+    <dimen name="padding_extra">24dp</dimen>
+    <dimen name="padding_xextra">32dp</dimen>
+
+    <!-- margins -->
+    <dimen name="margin_xsmall">2dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_large">12dp</dimen>
+    <dimen name="margin_xlarge">16dp</dimen>
+    <dimen name="margin_extra">24dp</dimen>
+    <dimen name="margin_xextra">32dp</dimen>
+
+</resources>

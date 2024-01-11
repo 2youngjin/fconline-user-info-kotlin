@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">fconline_user_kotlin</string>
+    <string name="check_button">조회</string>
+</resources>
