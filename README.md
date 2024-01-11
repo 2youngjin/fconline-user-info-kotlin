@@ -6,3 +6,4 @@
 - Room(현재 미적용)
 - Retrofit2
 - Clean architecture
+- Navigation
