@@ -6,4 +6,5 @@
     <string name="metadata_text">메타데이터</string>
     <string name="image_info_text">이미지정보</string>
     <string name="match_info_text">매치정보</string>
+    <string name="hint_user_nickname">구단주 명을 입력해 주세요.</string>
 </resources>
