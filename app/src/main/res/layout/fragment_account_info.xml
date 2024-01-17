@@ -20,7 +20,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_medium"
+            android:fontFamily="@font/spoqa_han_sans_neo_regular"
             android:hint="@string/hint_user_nickname"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:singleLine="true"
             app:layout_constraintEnd_toStartOf="@id/searchButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,6 +33,7 @@
             android:id="@+id/searchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
             android:onClick="@{() -> viewModel.searchUserId(userNameEditText.getText().toString())}"
             android:text="@string/check_button"
             app:layout_constraintBottom_toBottomOf="@id/userNameEditText"
@@ -37,13 +42,54 @@
             app:layout_constraintTop_toTopOf="@id/userNameEditText" />
 
         <TextView
-            android:id="@+id/idTextView"
+            android:id="@+id/userNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:text="@{viewModel.userNickName}"
+            android:textColor="@color/purple"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@id/userNameSubTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userNameEditText"
+            tools:text="에누리" />
+
+        <TextView
+            android:id="@+id/userNameSubTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            android:text="@string/user_name_sub"
+            android:textColor="@color/purple"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/userNameTextView"
+            app:layout_constraintStart_toEndOf="@id/userNameTextView" />
+
+        <TextView
+            android:id="@+id/levelTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:text="@{viewModel.userLevel}"
+            android:textColor="@color/black_default"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userNameEditText"
-            tools:text="12345" />
+            app:layout_constraintTop_toBottomOf="@id/userNameTextView"
+            tools:text="Lv.1000" />
+
+        <androidx.constraintlayout.helper.widget.Layer
+            android:id="@+id/userInfoLayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="userNameTextView,userNameSubTextView,levelTextView"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="66dp"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

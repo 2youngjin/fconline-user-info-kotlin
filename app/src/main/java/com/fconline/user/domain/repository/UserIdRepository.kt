@@ -1,7 +1,7 @@
 package com.fconline.user.domain.repository
 
-import com.fconline.user.data.model.UserId
+import com.fconline.user.data.model.dto.UserIdDto
 
 interface UserIdRepository {
-    suspend fun getUserId(nickName: String): UserId
+    suspend fun getUserId(nickName: String): UserIdDto
 }
