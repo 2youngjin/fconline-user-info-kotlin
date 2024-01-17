@@ -1,4 +1,4 @@
-package com.fconline.user.data.remote
+package com.fconline.user.data.source.remote
 
 import com.fconline.user.data.model.UserId
 import retrofit2.http.GET

@@ -27,7 +27,7 @@ class AccountInfoViewModel @Inject constructor(
         Log.e("AccountInfoViewModel", nickName)
         viewModelScope.launch {
             try {
-                _userId.value = getUserIdUseCase.execute(nickName)
+                _userId.value = getUserIdUseCase.getUserId(nickName)
                 _id.value = _userId.value?.id ?: ""
                 Log.e("AccountInfoViewModel", "id : ${_id.value}")
             } catch (e: HttpException) {
