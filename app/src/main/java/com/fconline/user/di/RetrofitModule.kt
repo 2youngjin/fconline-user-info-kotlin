@@ -1,6 +1,7 @@
 package com.fconline.user.di
 
 import com.fconline.user.data.source.remote.ApiService
+import com.fconline.user.util.API_KEY
 import com.fconline.user.util.DateUtil
 import com.fconline.user.util.HeaderInterceptor
 import com.google.gson.GsonBuilder
@@ -21,7 +22,7 @@ object RetrofitModule {
     @Provides
     @Singleton
     fun provideHeaderInterceptor(): HeaderInterceptor {
-        return HeaderInterceptor("live_901d5ca7706fde3f983d01b7990cad822aeadc51ffdea73da5b295535c277d57cefff0e1831c601b1b53fc439bbdf214")
+        return HeaderInterceptor(API_KEY)
     }
 
     @Provides

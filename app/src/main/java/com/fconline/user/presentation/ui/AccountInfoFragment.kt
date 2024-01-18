@@ -17,6 +17,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.fconline.user.BuildConfig
 import com.fconline.user.R
 import com.fconline.user.databinding.FragmentAccountInfoBinding
 import com.fconline.user.presentation.viewmodel.AccountInfoViewModel
