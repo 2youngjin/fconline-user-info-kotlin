@@ -17,6 +17,7 @@
     <dimen name="margin_extra">24dp</dimen>
     <dimen name="margin_xextra">32dp</dimen>
 
+    <dimen name="line_view_height">1dp</dimen>
     <dimen name="bottom_navigation_height">68dp</dimen>
     <dimen name="design_bottom_navigation_text_size" tools:override="true">10sp</dimen>
     <dimen name="design_bottom_navigation_active_text_size" tools:override="true">10sp</dimen>

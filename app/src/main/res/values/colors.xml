@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="black_default">#151515</color>
+    <color name="black">#181818</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#E8E8E8</color>
     <color name="purple">#755BFF</color>
+
+    <color name="line_view_color">#E0E0E0</color>
+
+    <color name="bottom_navigation_background">#F9F9F9</color>
+    <color name="bottom_navigation_default_icon_and_text_color">#B8BCBF</color>
+    <color name="bottom_navigation_selected_icon_and_text_color">#2F363E</color>
+
 </resources>

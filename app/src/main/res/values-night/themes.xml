@@ -3,5 +3,21 @@
     <style name="Base.Theme.Fconline_user_kotlin" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
     </style>
+
+    <!-- Custom style for BottomNavigationView -->
+    <style name="AppBottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <!-- Disable ripple effect for selected item -->
+        <item name="android:colorControlHighlight">@android:color/transparent</item>
+        <item name="android:theme">@style/NoRippleTheme</item>
+    </style>
+
+    <!-- Custom theme to disable the ripple effect -->
+    <style name="NoRippleTheme">
+        <item name="android:colorControlHighlight">@android:color/transparent</item>
+    </style>
+
 </resources>
