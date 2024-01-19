@@ -1,20 +1,20 @@
 package com.fconline.user.data.repository
 
 import android.util.Log
-import com.fconline.user.data.model.dto.UserIdDto
+import com.fconline.user.data.model.dto.MaxDivisionDto
 import com.fconline.user.data.source.remote.ApiService
-import com.fconline.user.domain.repository.UserIdRepository
+import com.fconline.user.domain.repository.MaxDivisionRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class UserIdRepositoryImpl @Inject constructor(
+class MaxDivisionRepositoryImpl @Inject constructor(
     private val apiService: ApiService
-) : UserIdRepository {
-    override fun getUserId(nickName: String): Flow<UserIdDto> = flow {
+) : MaxDivisionRepository {
+    override fun getMaxDivision(ouid: String): Flow<List<MaxDivisionDto>> = flow {
         try {
-            emit(apiService.getUserId(nickName))
+            emit(apiService.getMaxDivision(ouid))
         } catch (e: Exception) {
             // Handle errors as needed
             throw e

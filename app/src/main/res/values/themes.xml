@@ -6,6 +6,7 @@
         <item name="android:windowBackground">@color/white</item>
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="colorAccent">@color/black</item>
     </style>
 
     <style name="Theme.Fconline_user_kotlin" parent="Base.Theme.Fconline_user_kotlin" />

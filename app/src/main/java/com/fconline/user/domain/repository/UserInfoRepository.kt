@@ -1,7 +1,8 @@
 package com.fconline.user.domain.repository
 
 import com.fconline.user.data.model.dto.UserInfoDto
+import kotlinx.coroutines.flow.Flow
 
 interface UserInfoRepository {
-    suspend fun getUserInfo(ouid: String): UserInfoDto
+    fun getUserInfo(ouid: String): Flow<UserInfoDto>
 }

@@ -1,20 +1,20 @@
 package com.fconline.user.data.repository
 
 import android.util.Log
-import com.fconline.user.data.model.dto.UserIdDto
+import com.fconline.user.data.model.dto.MatchTypeDto
 import com.fconline.user.data.source.remote.ApiService
-import com.fconline.user.domain.repository.UserIdRepository
+import com.fconline.user.domain.repository.MatchTypeRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class UserIdRepositoryImpl @Inject constructor(
+class MatchTypeRepositoryImpl @Inject constructor(
     private val apiService: ApiService
-) : UserIdRepository {
-    override fun getUserId(nickName: String): Flow<UserIdDto> = flow {
+) : MatchTypeRepository {
+    override fun getMatchType(): Flow<List<MatchTypeDto>> = flow {
         try {
-            emit(apiService.getUserId(nickName))
+            emit(apiService.getMatchType())
         } catch (e: Exception) {
             // Handle errors as needed
             throw e

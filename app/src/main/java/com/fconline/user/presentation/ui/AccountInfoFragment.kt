@@ -17,11 +17,14 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.fconline.user.BuildConfig
 import com.fconline.user.R
 import com.fconline.user.databinding.FragmentAccountInfoBinding
 import com.fconline.user.presentation.viewmodel.AccountInfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AccountInfoFragment : Fragment() {
@@ -51,17 +54,30 @@ class AccountInfoFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun observeViewModel() {
-        viewModel.errorMessage.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-        }
-        viewModel.hideKeyboardEvent.observe(viewLifecycleOwner) { shouldHideKeyboard ->
-            if (shouldHideKeyboard == true) {
-                hideKeyboard()
-                viewModel.hideKeyboardEvent.value = false
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.errorMessage.collect { message ->
+                message?.let {
+                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                }
             }
         }
-        viewModel.userInfoVisible.observe(viewLifecycleOwner) {
-            binding.userInfoLayer.isVisible = it
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.hideKeyboardEvent.collect { shouldHideKeyboard ->
+                if (shouldHideKeyboard == true) {
+                    hideKeyboard()
+                    viewModel.hideKeyboardEvent.value = false
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.userInfoVisible.collect {
+                if (it != null) {
+                    binding.userInfoLayer.isVisible = it
+                }
+            }
         }
     }
 
