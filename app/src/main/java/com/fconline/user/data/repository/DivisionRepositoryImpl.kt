@@ -1,8 +1,10 @@
 package com.fconline.user.data.repository
 
 import android.util.Log
+import com.fconline.user.data.model.Mapper.toDomain
 import com.fconline.user.data.model.dto.DivisionDto
 import com.fconline.user.data.source.remote.ApiService
+import com.fconline.user.domain.model.Division
 import com.fconline.user.domain.repository.DivisionRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -12,9 +14,9 @@ import javax.inject.Inject
 class DivisionRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : DivisionRepository {
-    override fun getDivision(): Flow<List<DivisionDto>> = flow {
+    override fun getDivision(): Flow<List<Division>> = flow {
         try {
-            emit(apiService.getDivision())
+            emit(apiService.getDivision().map { it.toDomain() })
         } catch (e: Exception) {
             // Handle errors as needed
             throw e

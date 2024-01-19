@@ -5,7 +5,6 @@ import com.fconline.user.data.model.dto.MatchTypeDto
 import com.fconline.user.data.model.dto.MaxDivisionDto
 import com.fconline.user.data.model.dto.UserIdDto
 import com.fconline.user.data.model.dto.UserInfoDto
-import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 import retrofit2.http.Query
 

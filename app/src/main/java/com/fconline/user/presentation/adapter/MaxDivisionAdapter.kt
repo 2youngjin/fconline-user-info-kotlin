@@ -7,22 +7,22 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.fconline.user.R
-import com.fconline.user.data.model.dto.MaxDivisionDto
 import com.fconline.user.databinding.ItemMaxdivisionBinding
+import com.fconline.user.domain.model.MaxDivision
 
-class MaxDivisionAdapter : ListAdapter<MaxDivisionDto, MaxDivisionAdapter.ViewHolder>(object :
-    DiffUtil.ItemCallback<MaxDivisionDto>() {
-    override fun areItemsTheSame(oldItem: MaxDivisionDto, newItem: MaxDivisionDto): Boolean {
+class MaxDivisionAdapter : ListAdapter<MaxDivision, MaxDivisionAdapter.ViewHolder>(object :
+    DiffUtil.ItemCallback<MaxDivision>() {
+    override fun areItemsTheSame(oldItem: MaxDivision, newItem: MaxDivision): Boolean {
         return oldItem === newItem
     }
 
-    override fun areContentsTheSame(oldItem: MaxDivisionDto, newItem: MaxDivisionDto): Boolean {
+    override fun areContentsTheSame(oldItem: MaxDivision, newItem: MaxDivision): Boolean {
         return oldItem == newItem
     }
 }) {
     inner class ViewHolder(private val binding: ItemMaxdivisionBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: MaxDivisionDto) {
+        fun bind(item: MaxDivision) {
             binding.matchTypeTextView.text = when (item.matchType) {
                 30 -> "리그 친선"
                 40 -> "클래식 1on1"
@@ -81,7 +81,7 @@ class MaxDivisionAdapter : ListAdapter<MaxDivisionDto, MaxDivisionAdapter.ViewHo
                 placeholder(R.drawable.baseline_question_mark_24)
                 error(R.drawable.baseline_question_mark_24)
             }
-            binding.divisionDateTextView.text = item.achievementDate
+            binding.divisionDateTextView.text = item.achievementDate.replace("T", " ")
         }
     }
 

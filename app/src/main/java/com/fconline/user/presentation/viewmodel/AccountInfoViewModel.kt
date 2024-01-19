@@ -1,15 +1,13 @@
 package com.fconline.user.presentation.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fconline.user.data.model.dto.DivisionDto
-import com.fconline.user.data.model.dto.MatchTypeDto
-import com.fconline.user.data.model.dto.MaxDivisionDto
-import com.fconline.user.data.model.dto.UserIdDto
-import com.fconline.user.data.model.dto.UserInfoDto
+import com.fconline.user.domain.model.Division
+import com.fconline.user.domain.model.MatchType
+import com.fconline.user.domain.model.MaxDivision
+import com.fconline.user.domain.model.UserId
+import com.fconline.user.domain.model.UserInfo
 import com.fconline.user.domain.usecase.DivisionUserCase
 import com.fconline.user.domain.usecase.MatchTypeUseCase
 import com.fconline.user.domain.usecase.UserIdUseCase
@@ -18,7 +16,6 @@ import com.fconline.user.domain.usecase.MaxDivisionUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import javax.inject.Inject
@@ -40,9 +37,9 @@ class AccountInfoViewModel @Inject constructor(
     private val _userInfoVisible = MutableStateFlow<Boolean?>(null)
     val userInfoVisible: StateFlow<Boolean?> = _userInfoVisible
 
-    private val _userIdDto = MutableStateFlow<UserIdDto?>(null)
+    private val _userIdDto = MutableStateFlow<UserId?>(null)
 
-    private val _userInfoDto = MutableStateFlow<UserInfoDto?>(null)
+    private val _userInfoDto = MutableStateFlow<UserInfo?>(null)
 
     private val _userNickName = MutableStateFlow<String?>(null)
     val userNickName: StateFlow<String?> = _userNickName
@@ -50,14 +47,14 @@ class AccountInfoViewModel @Inject constructor(
     private val _userLevel = MutableStateFlow<String?>(null)
     val userLevel: StateFlow<String?> = _userLevel
 
-    private val _maxDivision = MutableStateFlow<List<MaxDivisionDto>>(emptyList())
-    val maxDivision: StateFlow<List<MaxDivisionDto>> = _maxDivision
+    private val _maxDivision = MutableStateFlow<List<MaxDivision>>(emptyList())
+    val maxDivision: StateFlow<List<MaxDivision>> = _maxDivision
 
-    private val _matchTypeList = MutableStateFlow<List<MatchTypeDto>>(emptyList())
-    val matchTypeList: StateFlow<List<MatchTypeDto>> = _matchTypeList
+    private val _matchTypeList = MutableStateFlow<List<MatchType>>(emptyList())
+    val matchTypeList: StateFlow<List<MatchType>> = _matchTypeList
 
-    private val _divisionList = MutableStateFlow<List<DivisionDto>>(emptyList())
-    val divisionList: StateFlow<List<DivisionDto>> = _divisionList
+    private val _divisionList = MutableStateFlow<List<Division>>(emptyList())
+    val divisionList: StateFlow<List<Division>> = _divisionList
 
     fun searchUserId(nickName: String) {
 
@@ -99,6 +96,7 @@ class AccountInfoViewModel @Inject constructor(
             try {
                 matchTypeUseCase.getMatchType().collect { result ->
                     _matchTypeList.value = result
+                    Log.e("TESTTEST", "matchTypeList Size : ${_matchTypeList.value.size}")
                 }
             } catch (e: HttpException) {
                 Log.e(
@@ -121,6 +119,7 @@ class AccountInfoViewModel @Inject constructor(
             try {
                 divisionUseCase.getDivision().collect() { result ->
                     _divisionList.value = result
+                    Log.e("TESTTEST", "matchTypeList Size : ${_divisionList.value.size}")
                 }
             } catch (e: HttpException) {
                 Log.e(
