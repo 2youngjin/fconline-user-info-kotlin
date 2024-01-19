@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
@@ -18,9 +19,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.fconline.user.BuildConfig
 import com.fconline.user.R
 import com.fconline.user.databinding.FragmentAccountInfoBinding
+import com.fconline.user.presentation.adapter.MaxDivisionAdapter
 import com.fconline.user.presentation.viewmodel.AccountInfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -31,6 +34,7 @@ class AccountInfoFragment : Fragment() {
 
     private lateinit var binding: FragmentAccountInfoBinding
     private val viewModel: AccountInfoViewModel by viewModels()
+    private val maxDivisionAdapter by lazy { MaxDivisionAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,14 +50,19 @@ class AccountInfoFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = this.viewModel
 
-        observeViewModel()
+        initRecyclerView()
+        collectViewModel()
         userNameDoneEvent()
 
         return binding.root
     }
 
+    private fun initRecyclerView() {
+        binding.maxDivisionRecyclerView.adapter = maxDivisionAdapter
+    }
+
     @SuppressLint("SetTextI18n")
-    private fun observeViewModel() {
+    private fun collectViewModel() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.errorMessage.collect { message ->
@@ -77,6 +86,12 @@ class AccountInfoFragment : Fragment() {
                 if (it != null) {
                     binding.userInfoLayer.isVisible = it
                 }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.maxDivision.collect {
+                maxDivisionAdapter.submitList(it)
             }
         }
     }

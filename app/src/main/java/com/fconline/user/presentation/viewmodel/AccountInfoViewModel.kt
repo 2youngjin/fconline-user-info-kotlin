@@ -68,6 +68,9 @@ class AccountInfoViewModel @Inject constructor(
             return
         }
 
+        getMatchType()
+        getDivision()
+
         viewModelScope.launch {
             try {
                 userIdUseCase.getUserId(nickName).collect { result ->
@@ -75,60 +78,18 @@ class AccountInfoViewModel @Inject constructor(
                     if (_userIdDto.value?.id != null) {
                         getUserInfo(_userIdDto.value!!.id)
                         getMaxDivision(_userIdDto.value!!.id)
-                        getMatchType()
-                        getDivision()
                     }
                 }
             } catch (e: HttpException) {
                 _errorMessage.value = "구단주 정보를 가져오는데 실패했습니다."
                 _userInfoVisible.value = false
+                _maxDivision.value = emptyList()
                 Log.e(
                     "API_ERROR",
                     "/id HTTP Error: ${e.code()}, Response: ${e.response()?.errorBody()?.string()}"
                 )
             } catch (e: Exception) {
                 Log.e("API_ERROR", "/id HTTP Unexpected Error: ${e.message}")
-            }
-        }
-    }
-
-    private fun getUserInfo(ouid: String) {
-        viewModelScope.launch {
-            try {
-                userInfoUseCase.getUserInfo(ouid).collect { result ->
-                    _userInfoDto.value = result
-                    _userNickName.value = _userInfoDto.value?.nickName
-                    _userLevel.value = "Lv.${_userInfoDto.value?.level}"
-                    _userInfoVisible.value = true
-                }
-            } catch (e: HttpException) {
-                Log.e(
-                    "API_ERROR",
-                    "/user/basic HTTP Error: ${e.code()}, Response: ${
-                        e.response()?.errorBody()?.string()
-                    }"
-                )
-            } catch (e: Exception) {
-                Log.e("API_ERROR", "/user/basic Unexpected Error: ${e.message}")
-            }
-        }
-    }
-
-    private fun getMaxDivision(ouid: String) {
-        viewModelScope.launch {
-            try {
-                maxDivisionUseCase.getMaxDivision(ouid).collect { result ->
-                    _maxDivision.value = result
-                }
-            } catch (e: HttpException) {
-                Log.e(
-                    "API_ERROR",
-                    "/user/maxdivision HTTP Error: ${e.code()}, Response: ${
-                        e.response()?.errorBody()?.string()
-                    }"
-                )
-            } catch (e: Exception) {
-                Log.e("API_ERROR", "/user/maxdivision Unexpected Error: ${e.message}")
             }
         }
     }
@@ -173,6 +134,47 @@ class AccountInfoViewModel @Inject constructor(
                     "API_ERROR",
                     "/static/fconline/meta/division Unexpected Error: ${e.message}"
                 )
+            }
+        }
+    }
+
+    private fun getUserInfo(ouid: String) {
+        viewModelScope.launch {
+            try {
+                userInfoUseCase.getUserInfo(ouid).collect { result ->
+                    _userInfoDto.value = result
+                    _userNickName.value = _userInfoDto.value?.nickName
+                    _userLevel.value = "Lv.${_userInfoDto.value?.level}"
+                    _userInfoVisible.value = true
+                }
+            } catch (e: HttpException) {
+                Log.e(
+                    "API_ERROR",
+                    "/user/basic HTTP Error: ${e.code()}, Response: ${
+                        e.response()?.errorBody()?.string()
+                    }"
+                )
+            } catch (e: Exception) {
+                Log.e("API_ERROR", "/user/basic Unexpected Error: ${e.message}")
+            }
+        }
+    }
+
+    private fun getMaxDivision(ouid: String) {
+        viewModelScope.launch {
+            try {
+                maxDivisionUseCase.getMaxDivision(ouid).collect { result ->
+                    _maxDivision.value = result
+                }
+            } catch (e: HttpException) {
+                Log.e(
+                    "API_ERROR",
+                    "/user/maxdivision HTTP Error: ${e.code()}, Response: ${
+                        e.response()?.errorBody()?.string()
+                    }"
+                )
+            } catch (e: Exception) {
+                Log.e("API_ERROR", "/user/maxdivision Unexpected Error: ${e.message}")
             }
         }
     }
