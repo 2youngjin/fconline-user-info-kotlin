@@ -6,6 +6,8 @@
     <color name="purple">#755BFF</color>
     <color name="green">#07F468</color>
 
+    <color name="button_text_color">#181818</color>
+
     <color name="line_view_color">#E0E0E0</color>
 
     <color name="bottom_navigation_background">#F9F9F9</color>

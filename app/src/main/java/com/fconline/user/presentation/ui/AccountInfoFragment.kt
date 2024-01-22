@@ -65,9 +65,10 @@ class AccountInfoFragment : Fragment() {
     private fun collectViewModel() {
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.errorMessage.collect { message ->
+            viewModel.toastMessage.collect { message ->
                 message?.let {
-                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                    showToast(it)
+                    viewModel.clearToast()
                 }
             }
         }
@@ -104,6 +105,10 @@ class AccountInfoFragment : Fragment() {
             }
             false
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     private fun hideKeyboard() {

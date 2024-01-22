@@ -31,8 +31,8 @@ class AccountInfoViewModel @Inject constructor(
 
     val hideKeyboardEvent = MutableStateFlow<Boolean?>(null)
 
-    private val _errorMessage = MutableStateFlow<String?>(null)
-    val errorMessage: StateFlow<String?> = _errorMessage
+    private val _toastMessage = MutableStateFlow<String?>(null)
+    val toastMessage: StateFlow<String?> = _toastMessage
 
     private val _userInfoVisible = MutableStateFlow<Boolean?>(null)
     val userInfoVisible: StateFlow<Boolean?> = _userInfoVisible
@@ -61,7 +61,7 @@ class AccountInfoViewModel @Inject constructor(
         requestHideKeyboard()
 
         if (nickName.isEmpty()) {
-            _errorMessage.value = "구단주 명을 입력해 주세요."
+            _toastMessage.value = "구단주 명을 입력해 주세요."
             return
         }
 
@@ -78,7 +78,7 @@ class AccountInfoViewModel @Inject constructor(
                     }
                 }
             } catch (e: HttpException) {
-                _errorMessage.value = "구단주 정보를 가져오는데 실패했습니다."
+                _toastMessage.value = "구단주 정보를 가져오는데 실패했습니다."
                 _userInfoVisible.value = false
                 _maxDivision.value = emptyList()
                 Log.e(
@@ -176,6 +176,14 @@ class AccountInfoViewModel @Inject constructor(
                 Log.e("API_ERROR", "/user/maxdivision Unexpected Error: ${e.message}")
             }
         }
+    }
+
+    fun showToast(message: String) {
+        _toastMessage.value = message
+    }
+
+    fun clearToast() {
+        _toastMessage.value = null
     }
 
     private fun requestHideKeyboard() {
