@@ -50,11 +50,15 @@ class AccountInfoFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = this.viewModel
 
-        initRecyclerView()
-        collectViewModel()
         userNameDoneEvent()
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
+        collectViewModel()
     }
 
     private fun initRecyclerView() {

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FC온라인유저</string>
     <string name="check_button">조회</string>
-    <string name="account_info_text">계정정보</string>
+    <string name="basic_info_text">기본정보</string>
     <string name="lank_info_text">랭커정보</string>
     <string name="metadata_text">메타데이터</string>
     <string name="image_info_text">이미지정보</string>
