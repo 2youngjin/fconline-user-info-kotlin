@@ -1,10 +1,13 @@
 <resources>
-    <string name="app_name">fconline_user_kotlin</string>
+    <string name="app_name">FC온라인유저</string>
     <string name="check_button">조회</string>
-    <string name="account_info_text">계정정보</string>
+    <string name="basic_info_text">기본정보</string>
     <string name="lank_info_text">랭커정보</string>
     <string name="metadata_text">메타데이터</string>
     <string name="image_info_text">이미지정보</string>
     <string name="match_info_text">매치정보</string>
     <string name="hint_user_nickname">구단주 명을 입력해 주세요.</string>
+    <string name="user_name_sub">구단주님</string>
+    <string name="max_division_text">역대 최고 등급</string>
+    <string name="match_text">매치 기록</string>
 </resources>

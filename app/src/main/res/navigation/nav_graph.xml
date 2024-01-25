@@ -20,15 +20,5 @@
         android:name="com.fconline.user.presentation.ui.RankInfoFragment"
         android:label="RankInfoFragment"
         tools:layout="@layout/fragment_rank_info" />
-    <fragment
-        android:id="@+id/metadataInfoFragment"
-        android:name="com.fconline.user.presentation.ui.MetadataInfoFragment"
-        android:label="MetadataInfoFragment"
-        tools:layout="@layout/fragment_metadata_info" />
-    <fragment
-        android:id="@+id/imageInfoFragment"
-        android:name="com.fconline.user.presentation.ui.ImageInfoFragment"
-        android:label="ImageInfoFragment"
-        tools:layout="@layout/fragment_image_info" />
 
 </navigation>

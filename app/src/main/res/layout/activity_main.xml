@@ -18,13 +18,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/line_view_height"
+        android:background="@color/line_view_color"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        style="@style/Theme.MaterialComponents.DayNight"
+        style="@style/AppBottomNavigationView"
         android:layout_width="0dp"
-        android:layout_height="@dimen/bottom_navigation_height"
+        android:layout_height="wrap_content"
+        android:background="@color/bottom_navigation_background"
+        app:itemIconTint="@color/bottom_navigation_item_color"
         app:itemTextAppearanceActive="@dimen/design_bottom_navigation_active_text_size"
         app:itemTextAppearanceInactive="@dimen/design_bottom_navigation_text_size"
+        app:itemTextColor="@color/bottom_navigation_item_color"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/margin_medium">
+
+    <ImageView
+        android:id="@+id/rankImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:fontFamily="@font/spoqa_han_sans_neo_bold"
+        android:src="@drawable/ico_rank0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/matchTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:fontFamily="@font/spoqa_han_sans_neo_bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_xlarge"
+        app:layout_constraintBottom_toTopOf="@id/divisionTextView"
+        app:layout_constraintStart_toEndOf="@id/rankImageView"
+        app:layout_constraintTop_toTopOf="@id/rankImageView"
+        tools:text="공식경기" />
+
+    <TextView
+        android:id="@+id/divisionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:fontFamily="@font/spoqa_han_sans_neo_regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_xlarge"
+        app:layout_constraintBottom_toTopOf="@id/divisionDateTextView"
+        app:layout_constraintStart_toStartOf="@id/matchTypeTextView"
+        tools:text="슈퍼챔피언스" />
+
+    <TextView
+        android:id="@+id/divisionDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:fontFamily="@font/spoqa_han_sans_neo_regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/divisionTextView"
+        tools:text="2019-12-09T14:00:17" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
