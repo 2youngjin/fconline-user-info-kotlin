@@ -65,6 +65,7 @@ class AccountInfoViewModel @Inject constructor(
             return
         }
 
+
         getMatchType()
         getDivision()
 
