@@ -1,32 +1,25 @@
 package com.fconline.user.presentation.ui
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DividerItemDecoration
-import com.fconline.user.BuildConfig
 import com.fconline.user.R
 import com.fconline.user.databinding.FragmentAccountInfoBinding
+import com.fconline.user.presentation.adapter.MatchListAdapter
 import com.fconline.user.presentation.adapter.MaxDivisionAdapter
 import com.fconline.user.presentation.viewmodel.AccountInfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -35,6 +28,7 @@ class AccountInfoFragment : Fragment() {
     private lateinit var binding: FragmentAccountInfoBinding
     private val viewModel: AccountInfoViewModel by viewModels()
     private val maxDivisionAdapter by lazy { MaxDivisionAdapter() }
+    private val matchListAdapter by lazy { MatchListAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,8 +44,6 @@ class AccountInfoFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = this.viewModel
 
-        userNameDoneEvent()
-
         return binding.root
     }
 
@@ -59,10 +51,12 @@ class AccountInfoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         collectViewModel()
+        userNameDoneEvent()
     }
 
     private fun initRecyclerView() {
         binding.maxDivisionRecyclerView.adapter = maxDivisionAdapter
+        binding.matchListRecyclerView.adapter = matchListAdapter
     }
 
     @SuppressLint("SetTextI18n")
@@ -97,6 +91,12 @@ class AccountInfoFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.maxDivision.collect {
                 maxDivisionAdapter.submitList(it)
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.matchId.collect {
+                matchListAdapter.submitList(it)
             }
         }
     }

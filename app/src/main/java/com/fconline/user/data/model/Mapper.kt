@@ -1,11 +1,13 @@
 package com.fconline.user.data.model
 
 import com.fconline.user.data.model.dto.DivisionDto
+import com.fconline.user.data.model.dto.MatchIdDto
 import com.fconline.user.data.model.dto.MatchTypeDto
 import com.fconline.user.data.model.dto.MaxDivisionDto
 import com.fconline.user.data.model.dto.UserIdDto
 import com.fconline.user.data.model.dto.UserInfoDto
 import com.fconline.user.domain.model.Division
+import com.fconline.user.domain.model.MatchId
 import com.fconline.user.domain.model.MatchType
 import com.fconline.user.domain.model.MaxDivision
 import com.fconline.user.domain.model.UserId
@@ -38,5 +40,4 @@ object Mapper {
         nickName = this.nickName ?: "",
         level = this.level ?: ""
     )
-
 }

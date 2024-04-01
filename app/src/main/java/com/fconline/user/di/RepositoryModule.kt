@@ -1,12 +1,14 @@
 package com.fconline.user.di
 
 import com.fconline.user.data.repository.DivisionRepositoryImpl
+import com.fconline.user.data.repository.MatchIdRepositoryImpl
 import com.fconline.user.data.repository.MatchTypeRepositoryImpl
 import com.fconline.user.data.repository.MaxDivisionRepositoryImpl
 import com.fconline.user.data.source.remote.ApiService
 import com.fconline.user.data.repository.UserIdRepositoryImpl
 import com.fconline.user.data.repository.UserInfoRepositoryImpl
 import com.fconline.user.domain.repository.DivisionRepository
+import com.fconline.user.domain.repository.MatchIdRepository
 import com.fconline.user.domain.repository.MatchTypeRepository
 import com.fconline.user.domain.repository.MaxDivisionRepository
 import com.fconline.user.domain.repository.UserIdRepository
@@ -49,4 +51,10 @@ object RepositoryModule {
     fun providesDivisionRepository(
         apiService: ApiService
     ): DivisionRepository = DivisionRepositoryImpl(apiService)
+
+    @Provides
+    @ViewModelScoped
+    fun providesMatchId(
+        apiService: ApiService
+    ): MatchIdRepository = MatchIdRepositoryImpl(apiService)
 }

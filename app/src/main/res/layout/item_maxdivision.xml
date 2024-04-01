@@ -11,10 +11,10 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:fontFamily="@font/spoqa_han_sans_neo_bold"
-        android:src="@drawable/ico_rank0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ico_rank0" />
 
     <TextView
         android:id="@+id/matchTypeTextView"

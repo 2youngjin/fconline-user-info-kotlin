@@ -9,5 +9,5 @@
     <string name="hint_user_nickname">구단주 명을 입력해 주세요.</string>
     <string name="user_name_sub">구단주님</string>
     <string name="max_division_text">역대 최고 등급</string>
-    <string name="match_text">매치 기록</string>
+    <string name="match_text">공식 경기 매치 기록</string>
 </resources>
